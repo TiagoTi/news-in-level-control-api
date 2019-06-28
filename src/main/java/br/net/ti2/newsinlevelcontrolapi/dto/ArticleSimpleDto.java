@@ -18,6 +18,12 @@ public class ArticleSimpleDto {
 	
 	
 
+	public ArticleSimpleDto() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
