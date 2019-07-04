@@ -24,6 +24,7 @@ import br.net.ti2.newsinlevelcontrolapi.dto.ArticleCreateDto;
 import br.net.ti2.newsinlevelcontrolapi.dto.ArticleSimpleDto;
 import br.net.ti2.newsinlevelcontrolapi.models.Article;
 import br.net.ti2.newsinlevelcontrolapi.repositories.ArticleRepository;
+import br.net.ti2.newsinlevelcontrolapi.vo.SummaryVo;
 
 @RestController
 @RequestMapping("/articles")
@@ -52,5 +53,10 @@ public class ArticleController {
 	public ResponseEntity<ArticleSimpleDto> createArticle(@RequestBody @Valid ArticleCreateDto articleDto, UriComponentsBuilder uriBuilder){
 		URI location = uriBuilder.path("/articles").build().toUri();
 		return ResponseEntity.created(location).body(new ArticleSimpleDto());
+	}
+	
+	@GetMapping("/summary")
+	public ResponseEntity<SummaryVo> getSummary(){
+		return ResponseEntity.ok().body(new SummaryVo(articleRepository));
 	}
 }
